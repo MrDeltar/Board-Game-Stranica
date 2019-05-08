@@ -20,10 +20,9 @@ namespace Board_Game_Stranica.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult PopisDogadaja()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Title = "Baza studenata";
             return View();
         }
     }

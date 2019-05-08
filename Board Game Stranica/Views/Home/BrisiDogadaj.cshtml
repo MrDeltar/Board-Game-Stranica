@@ -1,0 +1,27 @@
+﻿@using Board_Game_Stranica.Models
+@model Dogadaj
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <h2>@ViewBag.Title</h2>
+        <h3>Da li želite obrisati dogadaj @Model.Id @Model.Ime?</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Da, želim">
+            @Html.ActionLink("Povratak bez brisanja", "PopisDogadaja", "Home")
+        }
+    </div>
+</body>
+</html>

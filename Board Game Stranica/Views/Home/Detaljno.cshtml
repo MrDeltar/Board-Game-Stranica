@@ -1,0 +1,27 @@
+﻿@using Board_Game_Stranica.Models
+@model Dogadaj
+
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <h2>@ViewBag.Title</h2>
+        <h3>@Model.Ime</h3>
+        <p>
+            Datum rođenja: @Model.DatumOdrzavanja.ToString("dd.MM.yyyy")<br>
+        </p>
+        <p>@Html.ActionLink("Povrat na popis", "PopisDogadaja", "Home")</p>
+
+    </div>
+</body>
+</html>

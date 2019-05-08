@@ -1,0 +1,44 @@
+﻿@using Board_Game_Stranica.Models
+@model List<Dogadaj>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("PopisDogadaja", "Home", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <p>
+        <div class="form-group">
+            @Html.TextBox("Naziv", "", new { @class = "form-inline" })
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Traži
+            <span class="glyphicon glyphicon-search" aria-hidden="true" />
+        </button>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Ime</th>
+        <th>Akcije</th>
+    </tr>
+    @foreach (Dogadaj d in Model)
+    {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Ime</td>
+            <td>@d.DatumOdrzavanja</td>
+            <td>
+                @Html.ActionLink("Više", "Detaljno",
+                new { id = d.Id }) |
+                @Html.ActionLink("Ažuriranje", "Azuriraj",
+                    new { id = d.Id }) |
+                @Html.ActionLink("Brisanje", "Brisi",
+                    new { id = d.Id })
+            </td>
+        </tr>
+    }
+</table>
