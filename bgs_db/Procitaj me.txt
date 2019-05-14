@@ -1,0 +1,24 @@
+1. Trebas imati instalirane sljedece stvari (likovi uzeti iz pdf fajla s loomena "Vjezba 01-ponavljanje")
+
+	1. MySQL baza - MySQL Community Server (preuzmi)
+		http://dev.mysql.com/downloads/mysql/
+	2. (odnosi se na server koji preuzmes s linka iznad)Raspakirati arhivu, pokrenuti servis (koristi se cmd.exe)
+		http://dev.mysql.com/doc/refman/5.0/en/windows-start-commandline.html (rucno pokretanje svaki put)
+		http://dev.mysql.com/doc/refman/5.1/en/windows-start-service.html	(automatski se pokrene pri startu OS-a)
+	3. GUI Tool – MySQL Workbench   (program za manipulaciju bazom i za query-->preuzmi i instaliraj)
+		https://www.mysql.com/products/workbench/
+	4. ADO.NET driver za MySQL – Connector/NET  (preuzmi i instaliraj)
+		http://dev.mysql.com/downloads/connector/net/
+
+2. Ako mozes pokrenuti MySQL server (koristenjem cmd.exe), na MySQL Workbench napravis novi MySQL connection (MORAS SE USPJESNO POVEZATI NA TO)
+	1. Za MySQL Connection preporucujem:
+		Connection name: (sto god hoces)
+		Hostname: localhost
+		Port: (trebao bi biti 3306)
+		UserName: root
+	Ostale stvari ostavi kakve jesu
+	2. Ako dode to nekakvih poteskoca, google is your friend
+3. Stavi ovaj folder (bgs_db) u *C:\Program Files\MySQL\mysql-8.0.16-winx64\data
+	*ili koji god disk si odabrao i/ili lokacija foldera "MySQL", bitno je da se folder "bgs_db" nalazi u folderu "data"
+	(HINT: pogledaj sliku koja se nalazi uz ovaj tekst file)
+4. Ako sve radi kako treba (rip ako ne radi) onda bi visual studio trebao biti u stanju koristiti bazu podataka
