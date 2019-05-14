@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -210,12 +216,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PopisDogadajaController.cs" />
+    <Compile Include="Controllers\DogadajController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Dogadaj.cs" />
+    <Compile Include="Models\DogadajiDbContext.cs" />
     <Compile Include="Models\DogadajiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -280,14 +287,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Detaljno.cshtml" />
-    <Content Include="Views\Home\PopisDogadaja.cshtml" />
-    <Content Include="Views\Home\AzurirajDogadaj.cshtml" />
-    <Content Include="Views\Home\BrisiDogadaj.cshtml" />
+    <Content Include="Views\Dogadaj\Detaljno.cshtml" />
+    <Content Include="Views\Dogadaj\PopisDogadaja.cshtml" />
+    <Content Include="Views\Dogadaj\AzurirajDogadaj.cshtml" />
+    <Content Include="Views\Dogadaj\BrisiDogadaj.cshtml" />
+    <Content Include="Views\Dogadaj\Popis_dogadaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PopisDogadaja\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

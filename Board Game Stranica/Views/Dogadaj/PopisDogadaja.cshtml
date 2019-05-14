@@ -7,7 +7,7 @@
 
 
 <h2>@ViewBag.Title</h2>
-@using (Html.BeginForm("PopisDogadaja", "Home", FormMethod.Get, new { @class = "form-inline" }))
+@using (Html.BeginForm("PopisDogadaja", "Dogadaj", FormMethod.Get, new { @class = "form-inline" }))
 {
     <p>
         <div class="form-group">
@@ -21,22 +21,24 @@
 }
 <table class="table">
     <tr>
-        <th>Id</th>
-        <th>Ime</th>
-        <th>Akcije</th>
+        <th>Naziv Igre</th>
+        <th>Datum Odrzavanja</th>
+        <th>Mjesto Odrzavanja</th>
+        <th>Organizator</th>
     </tr>
     @foreach (Dogadaj d in Model)
     {
         <tr>
-            <td>@d.Id</td>
-            <td>@d.Ime</td>
+            <td>@d.Naziv</td>
             <td>@d.DatumOdrzavanja</td>
+            <td>@d.Mjesto</td>
+            <td>@d.Organizator</td>
             <td>
                 @Html.ActionLink("Više", "Detaljno",
                 new { id = d.Id }) |
-                @Html.ActionLink("Ažuriranje", "Azuriraj",
+                @Html.ActionLink("Ažuriranje", "AzurirajDogadaj",
                     new { id = d.Id }) |
-                @Html.ActionLink("Brisanje", "Brisi",
+                @Html.ActionLink("Brisanje", "BrisiDogadaj",
                     new { id = d.Id })
             </td>
         </tr>

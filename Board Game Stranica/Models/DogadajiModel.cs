@@ -46,36 +46,36 @@ namespace Board_Game_Stranica.Models
         }
 
         // konstruktor
-        public DogadajiModel()
-        {
-            if (!puno)
-            {
+        //public DogadajiModel()
+        //{
+        //    if (!puno)
+        //    {
 
-                puno = true;
+        //        puno = true;
 
-                // Dogadaj 1
-                dogadaji.Add(new Dogadaj
-                {
-                    Id = 1,
-                    Ime = "Star Wars Armada",
-                    DatumOdrzavanja = new DateTime(2019, 7, 5),
-                });
+        //        // Dogadaj 1
+        //        dogadaji.Add(new Dogadaj
+        //        {
+        //            Id = 1,
+        //            Naziv = "Star Wars Armada",
+        //            DatumOdrzavanja = new DateTime(2019, 7, 5),
+        //        });
 
-                // Dogadaj 2
-                dogadaji.Add(new Dogadaj
-                {
-                    Id = 2,
-                    Ime = "XCOM",
-                    DatumOdrzavanja = new DateTime(2019, 6, 23),
-                });
-                // klasično
-                Dogadaj d = new Dogadaj();
-                d.Id = 3;
-                d.Ime = "Firefly";
-                d.DatumOdrzavanja = new DateTime(2019, 6, 21);
-                // dodati u listu
-                dogadaji.Add(d);
-            }
-        }
+        //        // Dogadaj 2
+        //        dogadaji.Add(new Dogadaj
+        //        {
+        //            Id = 2,
+        //            Naziv = "XCOM",
+        //            DatumOdrzavanja = new DateTime(2019, 6, 23),
+        //        });
+        //        // klasično
+        //        Dogadaj d = new Dogadaj();
+        //        d.Id = 3;
+        //        d.Naziv = "Firefly";
+        //        d.DatumOdrzavanja = new DateTime(2019, 6, 21);
+        //        // dodati u listu
+        //        dogadaji.Add(d);
+        //    }
+        //}
     }
 }

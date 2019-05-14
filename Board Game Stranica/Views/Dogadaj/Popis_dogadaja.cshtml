@@ -1,0 +1,31 @@
+﻿@*@using Board_Game_Stranica.Models
+@model List<Dogadaj>
+@{
+    ViewBag.Title = "Popis_dogadaja";
+}
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Naziv</th>
+        <th>Akcije</th>
+    </tr>
+    @foreach (Dogadaj d in Model)
+    {
+    <tr>
+        <td>@d.Id</td>
+        <td>@d.Naziv</td>
+        <td>@d.DatumOdrzavanja</td>
+        <td>@d.Mjesto</td>
+        <td>@d.Organizator</td>
+        <td>
+            @Html.ActionLink("Više", "Detaljno",
+            new { id = d.Id }) |
+            @Html.ActionLink("Ažuriranje", "Azuriraj",
+                new { id = d.Id }) |
+            @Html.ActionLink("Brisanje", "Brisi",
+                new { id = d.Id })
+        </td>
+    </tr>
+    }
+</table>*@

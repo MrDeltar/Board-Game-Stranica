@@ -1,41 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Board_Game_Stranica.Models
 {
+    //koju bazu koristi
+    [Table("dogadaji")]
     public class Dogadaj
     {
         // id dogadaja
-        [Display(Name = "ID dogadaja")]
+        [Display(Name = "ID drustvene igre")]
+        [Key]
         public int Id { get; set; }
 
-        // ime dogadaja
-        private string ime;
+        // naziv dogadaja
+        private string naziv;
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan")]
-        public string Ime
+        public string Naziv
         {
-            get { return ime; }
-            set { ime = value; }
+            get { return naziv; }
+            set { naziv = value; }
         }
+        //mjesto odrzavanja
+        [Column("mjesto")]
+        [Display(Name = "Mjesto odrzavanja")]
+        [Required(ErrorMessage = "{0} je obavezan")]
+        public string Mjesto { get; set; }
 
         // Datum odrzavanja
-        [Display(Name = "Datum odrzavanja dogadaja")]
+        [Column("datum")]
+        [Display(Name = "Datum odrzavanja")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "{0} je obavezan")]
         public DateTime DatumOdrzavanja { get; set; }
 
+        //organizator
+        [Column("organizator")]
+        [Display(Name = "Organizator")]
+        [Required(ErrorMessage = "{0} je obavezno")]
+        public string Organizator { get; set; }
 
-       /* [RegularExpression(@"^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$")]
-        public string TelefonskiBroj { get; set; }
-
-        [EmailAddress]
-        [CreditCard]
-        public string Email { get; set; } */
 
     }
 }
