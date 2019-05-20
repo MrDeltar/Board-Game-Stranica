@@ -215,6 +215,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DogadajController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,9 +226,12 @@
     <Compile Include="Models\DogadajiDbContext.cs" />
     <Compile Include="Models\DogadajiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KorisniciDbContext.cs" />
+    <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\KorisnikViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -238,6 +242,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Pictures\520571-dice-100.png" />
+    <Content Include="Pictures\520571-dice-30.png" />
+    <Content Include="Pictures\520571-dice-512.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -292,6 +299,7 @@
     <Content Include="Views\Dogadaj\AzurirajDogadaj.cshtml" />
     <Content Include="Views\Dogadaj\BrisiDogadaj.cshtml" />
     <Content Include="Views\Dogadaj\Popis_dogadaja.cshtml" />
+    <Content Include="Views\Korisnik\Profil_Azuriraj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

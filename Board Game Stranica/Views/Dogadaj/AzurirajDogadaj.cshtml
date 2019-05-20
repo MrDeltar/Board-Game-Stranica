@@ -27,8 +27,9 @@
         <tr>
             <td>@Html.LabelFor(m => m.DatumOdrzavanja)</td>
             <td>
-                @Html.TextBoxFor(m => m.DatumOdrzavanja, "{0:yyyy-MM-dd}",
-           new { type = "date"})
+                @*@Html.EditorFor(m => m.DatumOdrzavanja, new { @type = "date" })*@
+                @*@Html.TextBoxFor(m => m.DatumOdrzavanja, new { @type = "date", @class = "form-control datepicker", @Value = Model.DatumOdrzavanja.ToString("dd-MM-yyyy hh-mm") })*@
+                @Html.TextBoxFor(m => m.DatumOdrzavanja, "{0:dd-MM-yyyy hh-mm}", new { type = "date"})
                 @Html.ValidationMessageFor(m => m.DatumOdrzavanja)
             </td>
         <tr>

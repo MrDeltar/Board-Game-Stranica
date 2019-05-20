@@ -1,6 +1,6 @@
-﻿@model Board_Game_Stranica.Models.RegisterViewModel
+﻿@model Board_Game_Stranica.ViewModels.KorisnikViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registracija";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -8,25 +8,59 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Iyradi novi korisnički račun.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+    //mail
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.RegViewMod.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.RegViewMod.Email, new { @class = "form-control" })
         </div>
     </div>
+    //pass
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.RegViewMod.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.RegViewMod.Password, new { @class = "form-control" })
         </div>
     </div>
+    //pass potvrda
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.RegViewMod.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.RegViewMod.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    //ime
+    <div class="form-group">
+        @Html.LabelFor(m => m.korisnikInfo.Ime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.korisnikInfo.Ime, new { @class = "form-control" })
+        </div>
+    </div>
+    //prezime
+    <div class="form-group">
+        @Html.LabelFor(m => m.korisnikInfo.Prezime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.korisnikInfo.Prezime, new { @class = "form-control" })
+        </div>
+    </div>
+    //spol
+    <div class="form-group">
+        @Html.LabelFor(m => m.korisnikInfo.Spol, new {@class="col-md-2 control-label"})
+        @Html.ValidationMessageFor(m => m.korisnikInfo.Spol)
+         <div class="col-md-10-">
+            @Html.RadioButtonFor(m => m.korisnikInfo.Spol, 'M') Muško
+            @Html.RadioButtonFor(m => m.korisnikInfo.Spol, 'Z') Žensko
+         </div>
+    </div>
+    //datum rodenja
+    <div class="form-group">
+        @Html.LabelFor(m => m.korisnikInfo.DatumRodenja, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.korisnikInfo.DatumRodenja, "{0:dd-MM-yyyy}", new { type = "date" })
+            @Html.ValidationMessageFor(m => m.korisnikInfo.DatumRodenja)
         </div>
     </div>
     <div class="form-group">

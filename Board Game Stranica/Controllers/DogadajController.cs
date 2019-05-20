@@ -28,7 +28,7 @@ namespace Board_Game_Stranica.Controllers
             return View(pretrazi);
         }
 
-        // detaljni podaci o studenatu
+        // detaljni podaci dogadaja
         public ActionResult Detaljno(int? id)
         {
             ViewBag.Title = "Podaci o drustevnoj igri";
@@ -36,11 +36,10 @@ namespace Board_Game_Stranica.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            // lambda izraz koji traži prvog studenta s Id-om koji je zadan
+            // lambda izraz
             Dogadaj d = baza.Dogadaji.Find(id);
             if (d == null)
             {
-                //return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                 return HttpNotFound();
             }
             return View(d);
@@ -48,7 +47,7 @@ namespace Board_Game_Stranica.Controllers
 
 
         // brisanje - get metoda
-        // detaljni podaci o studenatu
+        // detaljni podaci dogadaja
         public ActionResult BrisiDogadaj(int? id)
         {
             ViewBag.Title = "Brisanje drustvene igre";
@@ -56,46 +55,40 @@ namespace Board_Game_Stranica.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            // lambda izraz koji traži prvog studenta s Id-om koji je zadan
+            // lambda izraz
             Dogadaj d = baza.Dogadaji.Find(id);
             if (d == null)
             {
-                //return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                 return HttpNotFound();
             }
             return View(d);
         }
 
-        // post metoda brisi
+        // brisi - post metoda
         [HttpPost, ActionName("Brisi")]
         [ValidateAntiForgeryToken]
         public ActionResult BrisiPotvrda(int id)
         {
-            // brisanje
-            //baza.Dogadaji(id);
             return RedirectToAction("PopisDogadaja");
         }
 
-        // ažuriranje informacija dogadaja
-        // get metoda ažuriraj
+        // azuriranje informacija dogadaja
+        // azuriraj - get metoda
         [HttpGet]
         public ActionResult AzurirajDogadaj(int? id)
         {
-            //ViewBag.Title = "Ažuriranje podataka o studentu/ici";
             Dogadaj d;
             if (id == null)
             {
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 d = new Dogadaj();
                 ViewBag.Title = "Novo organiziranje";
             }
             else
             {
-                // lambda izraz koji traži prvog studenta s Id-om koji je zadan
+                // lambda izraz
                 d = baza.Dogadaji.Find(id);
                 if (d == null)
                 {
-                    //return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                     return HttpNotFound();
                 }
                 ViewBag.Title = "Ažuriranje drustvene igre";
@@ -103,7 +96,7 @@ namespace Board_Game_Stranica.Controllers
             return View(d);
         }
 
-        // post metoda azuriraj
+        // azuriraj - post metoda
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AzurirajDogadaj(
@@ -112,24 +105,20 @@ namespace Board_Game_Stranica.Controllers
         {
             //validacija
             // provjera datuma odrzavanja
-
-            //if (d.DatumOdrzavanja < DateTime.Now)
-            //    ModelState.AddModelError("DatumOdrzavanja",
-            //        "Datum odrzavanja ne moze biti u proslosti");
-
-            // provjera je li model ispravan
+            if (d.DatumOdrzavanja < DateTime.Now)
+                ModelState.AddModelError("DatumOdrzavanja",
+                    "Datum odrzavanja ne može biti u prošlosti");
+            // provjera ispravnosti modela
             if (ModelState.IsValid)
             {
                 if (d.Id == 0)
                 {
                     // dodavanje u bazu
-                    // baza.DodajStudenta(s);
                     baza.Dogadaji.Add(d);
                 }
                 else
                 {
-                    // ažuriranje studenta u bazi
-                    //baza.AzurirajStudenta(s);
+                    // azuriranje u bazi
                     baza.Entry(d).State = EntityState.Modified;
                 }
                 baza.SaveChanges();
