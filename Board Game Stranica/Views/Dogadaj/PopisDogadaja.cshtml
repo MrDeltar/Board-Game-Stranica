@@ -19,11 +19,12 @@
         </button>
     </p>
 }
+<p>@Html.ActionLink("Organiziraj novu igru", "NapraviDogadaj")</p>
 <table class="table">
     <tr>
         <th>Naziv Igre</th>
-        <th>Datum Odrzavanja</th>
-        <th>Mjesto Odrzavanja</th>
+        <th>Datum Održavanja</th>
+        <th>Mjesto Održavanja</th>
         <th>Organizator</th>
     </tr>
     @foreach (Dogadaj d in Model)

@@ -35,7 +35,7 @@ namespace Board_Game_Stranica.Models
         [Column("datum")]
         [Display(Name = "Datum odrzavanja")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:mm-dd-yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "{0} je obavezan")]
         public DateTime DatumOdrzavanja { get; set; }
 

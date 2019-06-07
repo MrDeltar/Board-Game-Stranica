@@ -2,7 +2,7 @@
 @model Dogadaj
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
 
 }
 
@@ -18,10 +18,16 @@
         <h2>@ViewBag.Title</h2>
         <h3>@Model.Naziv</h3>
         <p>
-            Datum odrzavanja: @Model.DatumOdrzavanja.ToString("dd.MM.yyyy")<br>
+            Datum održavanja: @Model.DatumOdrzavanja.ToString("dd.MM.yyyy")<br>
         </p>
+        <p>Mjesto održavanja: @Model.Mjesto</p>
+        <p>Organizator: @Model.Organizator</p>
         <p>@Html.ActionLink("Povrat na popis", "PopisDogadaja", "Dogadaj")</p>
 
     </div>
+    <p>
+        <span class="glyphicon glyphicon-print"></span>
+        @Html.ActionLink("Ispiši", "Ispis", new { naziv = Request.QueryString["naziv"] })
+    </p>
 </body>
 </html>

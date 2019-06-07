@@ -3,9 +3,9 @@
     ViewBag.Title = "Pregled korisničkog računa";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+@*<p class="text-success">@ViewBag.StatusMessage</p>*@
 <div>
     <h4></h4>
     <hr />
@@ -73,43 +73,42 @@
 
     <div class="row">
         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Podaci</h4>
+            <h4 class="mb-3">Podaci o vama</h4>
             <form class="needs-validation" novalidate="">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Ime</label>
-                        <input type="text" class="form-control" id="ime" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="ime" placeholder="@*@Model.korisnikInfo.Ime*@" value="" required="">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Prezime</label>
-                        <input type="text" class="form-control" id="prezime" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="prezime" placeholder="@*@Model.korisnikInfo.Prezime*@" value="" required="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="datumRodenja">Datum Rođenja</label> 
+                        <input type="text" class="form-control" id="prezime" placeholder="@*@Model.korisnikInfo.DatumRodenja*@" value="" required="">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="email">@Model.RegViewMod.Email</label>
-                    <input type="email" class="form-control" id="mail" placeholder="" required="">
-                    <div class="invalid-feedback">
-                        Email nije prepoznat
-                    </div>
-                </div>              
-                    <dl class="col-md-6 mb-3">
-                        <dd>
-                            @if (Model.IndViewMod.HasPassword)
-                            {
-                                <div class="btn-group" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-default">@Html.ActionLink("Promijeni lozinku", "ChangePassword")</button>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="btn-group" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-default">@Html.ActionLink("Napravi", "SetPassword")</button>
-                                </div>
-                            }
-                            </dd>
-                    </dl>
-                    <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Promjena podataka</button>
+
+                <dl class="col-md-6 mb-3">
+                    <dd>
+                        @*@if (Model.IndViewMod.HasPassword)*@
+                        @if (Model.IndViewMod != null ? Model.IndViewMod.HasPassword : false)
+                        {
+                        <div class="col-md-6 mb-3">
+                            <button type="button" class="btn btn-default">@Html.ActionLink("Promijeni lozinku", "ChangePassword")</button>
+                        </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-6 mb-3">
+                                <button type="button" class="btn btn-default">@Html.ActionLink("Promijeni lozinku", "SetPassword")</button>
+                            </div>
+                        }
+                    </dd>
+                </dl>
+                <hr class="mb-4">
+                @Html.ActionLink("Promjena osobnih informacija", "Profil_Azuriraj", "Korisnik")
             </form>
         </div>
     </div>

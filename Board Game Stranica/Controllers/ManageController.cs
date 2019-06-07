@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Board_Game_Stranica.Models;
+using Board_Game_Stranica.ViewModels;
 
 namespace Board_Game_Stranica.Controllers
 {
@@ -72,7 +73,13 @@ namespace Board_Game_Stranica.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            return View(model);
+
+            KorisnikViewModel kvm = new KorisnikViewModel();
+            kvm.RegViewMod = new RegisterViewModel();
+            kvm.RegViewMod.Email = "";
+
+            return View(kvm);
+            //return View(model);
         }
 
         //

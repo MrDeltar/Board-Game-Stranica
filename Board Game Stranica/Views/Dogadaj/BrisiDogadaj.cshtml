@@ -2,9 +2,8 @@
 @model Dogadaj
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -15,7 +14,8 @@
 <body>
     <div>
         <h2>@ViewBag.Title</h2>
-        <h3>Da li želite obrisati dogadaj @Model.Naziv?</h3>
+        <h3>Da li želite obrisati događaj @Model.Naziv?</h3>
+        
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()

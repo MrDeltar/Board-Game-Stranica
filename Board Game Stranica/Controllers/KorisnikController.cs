@@ -90,7 +90,7 @@ namespace Board_Game_Stranica.Controllers
         // azuriranje podataka korisnika
         // azuriraj - get metoda
         [HttpGet]
-        public ActionResult Azuriraj(int? id_korisnik)
+        public ActionResult Profil_Azuriraj(int? id_korisnik)
         {
             Korisnik s;
             if (id_korisnik == null)
@@ -105,7 +105,7 @@ namespace Board_Game_Stranica.Controllers
                 {
                     return HttpNotFound();
                 }
-                ViewBag.Title = "Ažuriranje podataka";
+                ViewBag.Title = "Ažuriranje osobnih informacija";
             }
             return View(s);
         }

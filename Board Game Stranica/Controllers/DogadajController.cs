@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Board_Game_Stranica.Ispis_PDF;
 using Board_Game_Stranica.Models;
 
 namespace Board_Game_Stranica.Controllers
@@ -28,6 +30,27 @@ namespace Board_Game_Stranica.Controllers
             return View(pretrazi);
         }
 
+        // napravi dogadaj - get
+        public ActionResult NapraviDogadaj()
+        {
+            return View();
+        }
+
+        // napravi dogadaj - post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Naziv,Mjesto,DatumOdrzavanja,Organizator")] Dogadaj dogadaj)
+        {
+            if (ModelState.IsValid)
+            {
+                baza.Dogadaji.Add(dogadaj);
+                baza.SaveChanges();
+                return RedirectToAction("PopisDogadaja");
+            }
+
+            return View(dogadaj);
+        }
+
         // detaljni podaci dogadaja
         public ActionResult Detaljno(int? id)
         {
@@ -42,7 +65,18 @@ namespace Board_Game_Stranica.Controllers
             {
                 return HttpNotFound();
             }
-            return View(d);
+                  return View(d);        
+        }
+
+
+        // ispis
+        public FileStreamResult Ispis(int? id)
+        {
+            // lambda izraz
+            Dogadaj d = baza.Dogadaji.Find(id);
+
+            IspisDogadaja i = new IspisDogadaja(d);
+            return new FileStreamResult(new MemoryStream(i.Podaci), "application/pdf");
         }
 
 
@@ -62,13 +96,18 @@ namespace Board_Game_Stranica.Controllers
                 return HttpNotFound();
             }
             return View(d);
+
+         
         }
 
         // brisi - post metoda
-        [HttpPost, ActionName("Brisi")]
+        [HttpPost, ActionName("BrisiDogadaj")]
         [ValidateAntiForgeryToken]
         public ActionResult BrisiPotvrda(int id)
         {
+            Dogadaj d = baza.Dogadaji.Find(id);
+            baza.Dogadaji.Remove(d);
+            baza.SaveChanges();
             return RedirectToAction("PopisDogadaja");
         }
 
@@ -100,21 +139,19 @@ namespace Board_Game_Stranica.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AzurirajDogadaj(
-            [Bind(Include ="Id, Naziv, Datum, Mjesto, Organizator")]
-            Dogadaj d)
+            [Bind(Include ="Id, Naziv, Datum, Mjesto, Organizator")] Dogadaj d)
         {
             //validacija
             // provjera datuma odrzavanja
-            if (d.DatumOdrzavanja < DateTime.Now)
-                ModelState.AddModelError("DatumOdrzavanja",
-                    "Datum odrzavanja ne može biti u prošlosti");
+            //if (d.DatumOdrzavanja < DateTime.Now)
+            //   ModelState.AddModelError("DatumOdrzavanja", "Datum odrzavanja ne može biti u prošlosti");
             // provjera ispravnosti modela
             if (ModelState.IsValid)
             {
                 if (d.Id == 0)
                 {
                     // dodavanje u bazu
-                    baza.Dogadaji.Add(d);
+                    
                 }
                 else
                 {

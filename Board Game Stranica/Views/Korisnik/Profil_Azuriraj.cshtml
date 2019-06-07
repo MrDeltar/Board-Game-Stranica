@@ -10,12 +10,12 @@
 {
     @Html.AntiForgeryToken()
     <table class="table">
-        <tr>
+        @*<tr>
             <td>@Html.LabelFor(m => m.Id_korisnik)</td>
             <td>
                 @Html.TextBoxFor(m => m.Id_korisnik, new { disabled = true })
             </td>
-        <tr>
+        <tr>*@
         <tr>
             <td>@Html.LabelFor(m => m.Ime)</td>
             <td>
@@ -28,22 +28,6 @@
             <td>
                 @Html.TextBoxFor(m => m.Prezime)
                 @Html.ValidationMessageFor(m => m.Prezime)
-            </td>
-        <tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.Spol)</td>
-            <td>
-                @Html.RadioButtonFor(m => m.Spol, 'M') Muški
-                @Html.RadioButtonFor(m => m.Spol, 'Z') Ženski
-                @Html.ValidationMessageFor(m => m.Spol)
-            </td>
-        <tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.DatumRodenja)</td>
-            <td>
-                @Html.TextBoxFor(m => m.DatumRodenja, "{0:yyyy-MM-dd}",
-           new { type = "date"})
-                @Html.ValidationMessageFor(m => m.DatumRodenja)
             </td>
         <tr>
 
