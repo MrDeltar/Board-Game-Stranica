@@ -34,6 +34,13 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
+INSERT INTO `dogadaji` (`id`,`naziv`,`mjesto`,`datum`,`organizator`) 
+  VALUES (1,'Star Wars Armada','Čakovec','2019-07-11','Jura Cilar');
+INSERT INTO `dogadaji` (`id`,`naziv`,`mjesto`,`datum`,`organizator`) 
+  VALUES (2,'XCOM The Board Game','Casa Latina','2019-07-22','Matteo Posavec');
+  
+commit;
+
 
 -- -----------------------------------------------------
 -- Table `bgs_db`.`korisnici`
